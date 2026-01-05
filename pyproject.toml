@@ -1,15 +1,14 @@
-[tool.poetry]
+[project]
 name = "tddkatas"
 version = "0.1.0"
-description = ""
-authors = ["kda <dinsultanabs@gmail.com>"]
+description = "TDD Manifesto exercises"
 readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "pytest>=9.0.2",
+]
 
-[tool.poetry.dependencies]
-python = "^3.11"
-pytest = "^7.3.0"
-
-
-[build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+[tools.pytest.pytest_ini]
+pythonpath = ["."]
+testpaths = ["tests"]
+addopts = "-v --tb=short --strict-markers"
