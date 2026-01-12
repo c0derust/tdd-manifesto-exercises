@@ -7,7 +7,7 @@ def test_valid_password_returns_no_errors():
 
 
 def test_validator_requires_at_least_8_characters_long():
-    result = validate_password("short99")
+    result = validate_password("Short99")
     assert result == {
         "valid": False,
         "errors": ["Password must be at least 8 characters"],
@@ -30,4 +30,12 @@ def test_validator_handles_multiple_errors():
             "Password must be at least 8 characters",
             "The password must contain at least 2 numbers",
         ],
+    }
+
+
+def test_validator_requires_at_least_one_capital_letter():
+    result = validate_password("password99!")
+    assert result == {
+        "valid": False,
+        "errors": ["password must contain at least one capital letter"],
     }

@@ -30,6 +30,10 @@ def validate_password(password: str) -> dict:
         is_valid = False
         errors.append("The password must contain at least 2 numbers")
 
+    if missing_at_least_1_captial(password):
+        is_valid = False
+        errors.append("password must contain at least one capital letter")
+
     return {"valid": is_valid, "errors": errors}
 
 
@@ -42,4 +46,11 @@ def missing_at_least_2_numbers(password: str) -> bool:
         if nums >= 2:
             return False
 
+    return True
+
+
+def missing_at_least_1_captial(password: str) -> bool:
+    for c in password:
+        if c.isupper():
+            return False
     return True
