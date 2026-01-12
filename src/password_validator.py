@@ -34,6 +34,10 @@ def validate_password(password: str) -> dict:
         is_valid = False
         errors.append("password must contain at least one capital letter")
 
+    if missing_at_least_1_special_char(password):
+        is_valid = False
+        errors.append("password must contain at least one special character")
+
     return {"valid": is_valid, "errors": errors}
 
 
@@ -52,5 +56,14 @@ def missing_at_least_2_numbers(password: str) -> bool:
 def missing_at_least_1_captial(password: str) -> bool:
     for c in password:
         if c.isupper():
+            return False
+    return True
+
+
+def missing_at_least_1_special_char(password: str) -> bool:
+    # oversimplified approach
+    SPECIAL_CHARS = {code for code in range(33, 48)}
+    for c in password:
+        if ord(c) in SPECIAL_CHARS:
             return False
     return True
