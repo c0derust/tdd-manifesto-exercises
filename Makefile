@@ -1,6 +1,6 @@
 PHONY: linter test
 
-linter:
+lint:
 	uvx ruff format
 	uvx ruff check
 
