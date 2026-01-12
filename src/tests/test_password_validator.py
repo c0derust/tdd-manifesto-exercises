@@ -20,3 +20,14 @@ def test_validator_requires_at_least_2_numbers():
         "valid": False,
         "errors": ["The password must contain at least 2 numbers"],
     }
+
+
+def test_validator_handles_multiple_errors():
+    result = validate_password("Pass9")
+    assert result == {
+        "valid": False,
+        "errors": [
+            "Password must be at least 8 characters",
+            "The password must contain at least 2 numbers",
+        ],
+    }
