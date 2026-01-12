@@ -40,16 +40,16 @@ STOP HERE if you are a beginner. Continue if you could finish the steps (1-5.) w
 “//|\n1|2,-3” is invalid and return the message “Negative number(s) not allowed: -3\n’|’ expected but ‘,’ found at position 3.”
 8. Numbers bigger than 1000 should be ignored, so adding 2 + 1001 = 2
 """
+
 import re
 from typing import Tuple
 
 
 def added(expression: str) -> int:
-    """
-    """
+    """ """
     # we only accept str
     if type(expression) is not str:
-        raise TypeError('expression paramteter should string')
+        raise TypeError("expression paramteter should string")
 
     # empty str is always 0
     if not expression:
@@ -57,20 +57,16 @@ def added(expression: str) -> int:
 
     delimiter, remaining_part = extract_expression_params(expression)
     if expression_is_not_valid(remaining_part, delimiter):
-        raise ValueError('Expression has inconsistent separator')
+        raise ValueError("Expression has inconsistent separator")
 
-    int_numbers = [] 
-    for line in remaining_part.split('\n'):
-        int_numbers.extend(
-            [int(n) for n in line.split(delimiter)]
-        )
+    int_numbers = []
+    for line in remaining_part.split("\n"):
+        int_numbers.extend([int(n) for n in line.split(delimiter)])
     return sum(int_numbers)
 
 
 def extract_expression_params(expression: str) -> Tuple[str, str]:
-    pattern = re.compile(
-        r'^\/\/(.+)\n'
-    )
+    pattern = re.compile(r"^\/\/(.+)\n")
 
     # we extract separator lead by double forward slashes and followed by newline symbol
     delimiter_match = re.match(pattern, expression)
@@ -83,7 +79,7 @@ def extract_expression_params(expression: str) -> Tuple[str, str]:
 
 
 def expression_is_not_valid(numbers_with_delimiters: str, delimiter: str) -> bool:
-    for line in numbers_with_delimiters.split('\n'):
+    for line in numbers_with_delimiters.split("\n"):
         for num in line.split(delimiter):
             try:
                 int(num)

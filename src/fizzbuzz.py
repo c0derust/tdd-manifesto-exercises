@@ -17,15 +17,16 @@ write your assertions relating to the exact requirements
 4. For numbers that are multiples of both three and five return “FizzBuzz”.
 """
 
+
 def fizzbuzz(number: int) -> str:
     if is_fizzbuzz(number):
-        return str('FizzBuzz')
+        return str("FizzBuzz")
 
     if is_fizz(number):
-        return str('Fizz')
+        return str("Fizz")
 
     if is_buzz(number):
-        return str('Buzz')
+        return str("Buzz")
 
     return str(number)
 
