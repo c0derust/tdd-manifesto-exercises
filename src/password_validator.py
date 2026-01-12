@@ -26,4 +26,20 @@ def validate_password(password: str) -> dict:
         is_valid = False
         errors.append("Password must be at least 8 characters")
 
+    if missing_at_least_2_numbers(password):
+        is_valid = False
+        errors.append("The password must contain at least 2 numbers")
+
     return {"valid": is_valid, "errors": errors}
+
+
+def missing_at_least_2_numbers(password: str) -> bool:
+    nums = 0
+
+    for c in password:
+        if c.isnumeric():
+            nums += 1
+        if nums >= 2:
+            return False
+
+    return True
